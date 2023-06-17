@@ -11,6 +11,9 @@ a{
   color: #0f0f0f;
 }
 body{
-  background-color: #38373b;
+  background-color: #d3d3d3;
   font-family: 'Rubik', sans-serif;
+}
+html{
+  scroll-behavior: smooth;
 }

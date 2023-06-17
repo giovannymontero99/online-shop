@@ -3,10 +3,12 @@
     justify-content: space-between;
     position: fixed;
     width: 100%;
+    top: 0;
+    z-index: 2000;
 }
 
 .header-logo-content{
-    padding-left: 15px;
+    padding: 15px;
     display: flex;
     align-content: center;
 }
@@ -23,6 +25,34 @@
     transition-duration: 0.15s;
     border-radius: 16px;
 }
+
+.header-whastapp-logo{
+    position: fixed;
+    padding: 1rem;
+    bottom: 3rem;
+    right: 0;
+}
+.header-whastapp-logo img{
+    animation: whatsapp 1.5s infinite;
+}
+
+@keyframes whatsapp {
+    0% { 
+        width: 36px;
+        height: 36px;
+    }
+    50%{ 
+        width: 40px;
+        height: 40px;
+    }
+    100% { 
+        width: 36px;
+        height: 36px;
+    }
+}
+
+
+
 /*!
  * Hamburgers
  * @description Tasty CSS-animated hamburgers
@@ -57,7 +87,7 @@
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-    background-color: #f0f0f0;
+    background-color: #000000;
 }
 
 .hamburger-box {
@@ -72,13 +102,23 @@
     top: 50%;
     margin-top: -2px;
 }
+.hamburger-inner::before{
+    width: 80%;
+    right: 0;
+    height: 4px;
+    background-color: #000000;
+    border-radius: 4px;
+    position: absolute;
+    transition-property: transform;
+    transition-duration: 0.15s;
+    transition-timing-function: ease;
 
+}
 .hamburger-inner,
-.hamburger-inner::before,
 .hamburger-inner::after {
     width: 40px;
     height: 4px;
-    background-color: #f0f0f0;
+    background-color: #000000;
     border-radius: 4px;
     position: absolute;
     transition-property: transform;
@@ -136,4 +176,5 @@
     top: 0;
     transform: rotate(-90deg);
     transition: top 0.1s 0.16s cubic-bezier(0.33333, 0, 0.66667, 0.33333), transform 0.13s 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
+    width: 40px;
 }

@@ -1,10 +1,13 @@
 import React from 'react';
 import './Principal.css';
+import Slider from './Principal-components/Slider';
 
 const Principal = () =>{
     return(
         <section className='Principal' >
-            Hola
+            <div>
+                <Slider></Slider>
+            </div>
         </section>
     );
 }

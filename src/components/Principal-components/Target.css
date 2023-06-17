@@ -1,0 +1,48 @@
+.Target{
+    width: 90%;
+    background-color: #ffffff;
+    margin: auto;
+    margin-top: 5rem;
+    max-width: 500px;
+    border-radius: 1rem;
+}
+
+.target-imgs-content{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    overflow: hidden;
+    padding: 1rem;
+}
+.target-imgs-content > div{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+.target-imgs-content > div:first-child{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+.img{
+    width: 100%;
+}
+
+.target-description{
+    background-color: #19181f;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    color: #fff;
+}
+.target-info-title{
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+}
+.target-info-desc{
+    font-size: .8rem;
+}
+.target-info-value{
+    font-size: 1.5rem;
+    padding: 1rem 0;
+}
