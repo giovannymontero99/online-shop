@@ -28,7 +28,9 @@ const Slider = () => {
         }
     }
 
-    getData(null);
+    useEffect(() =>{
+        getData(null);
+    },[]);
 
 
     const getOneData = async (targetId) => {
