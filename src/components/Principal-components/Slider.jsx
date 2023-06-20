@@ -25,6 +25,10 @@ const Slider = () => {
             setTargets(responseJson.results);
         } catch (error) {
             console.log(error);
+            setPages("");
+            setNext("");
+            setPrevius("");
+            setTargets([]);
         }
     }
 
@@ -96,7 +100,7 @@ const Slider = () => {
             }
 
             <div className='targets-content' >
-                {targets.length === 0 ? <div></div> : targets.map(target => {
+                { targets.length === 0 || targets === undefined ? <div></div> : targets.map(target => {
                     return (
                         <div key={target.id} className='target' >
                             <div className='target-img-content' ><img src={target.imgs[0]} /></div>
