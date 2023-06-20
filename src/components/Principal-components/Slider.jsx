@@ -15,7 +15,7 @@ const Slider = () => {
     const ref = useRef(null);
 
     const getData = async (url) => {
-        url === null ? url = `http://localhost:3030/api/v1/?offset=0&limit=20` : url;
+        url === null ? url = `https://backend-390023.rj.r.appspot.com/api/v1/?offset=0&limit=20` : url;
         try {
             const response = await fetch(url);
             const responseJson = await response.json();
@@ -33,19 +33,18 @@ const Slider = () => {
 
     const getOneData = async (targetId) => {
         try {
-            const response = await fetch(`http://localhost:3030/api/v1/${targetId}`);
+            const response = await fetch(`https://backend-390023.rj.r.appspot.com/api/v1/${targetId}`);
             const responseJson = await response.json();
             setTargetData(responseJson)
         } catch (error) {
             console.log(error);
         }
-
     }
 
 
     return (
         <>
-            <section  id='welcome' className='welcome-section' >
+            <section id='welcome' className='welcome-section' >
                 <h1>Tecnologia Manizales</h1>
                 <p>Toda la tecnologia al alcance de tu mano.</p>
             </section>
@@ -60,7 +59,7 @@ const Slider = () => {
                     null :
                     <div className='target-data-section' >
                         <div >
-                            <div onClick={ () => { setTargetData(null); setDefaultImg(null) }} className='hamburges-close-container' >
+                            <div onClick={() => { setTargetData(null); setDefaultImg(null) }} className='hamburges-close-container' >
                                 <div className='hamburges hamburger--collapse is-active' >
                                     <span className="hamburger-box">
                                         <span className="hamburger-inner"></span>

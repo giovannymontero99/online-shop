@@ -75,7 +75,7 @@
     margin-top: 2.5rem;
     background-color: #ffffff;
     border-radius: 1rem;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 .target-data-img-principal{
     width: 100%;
