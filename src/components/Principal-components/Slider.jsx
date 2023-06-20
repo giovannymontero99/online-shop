@@ -25,10 +25,6 @@ const Slider = () => {
             setTargets(responseJson.results);
         } catch (error) {
             console.log(error);
-            setPages("");
-            setNext("");
-            setPrevius("");
-            setTargets([]);
         }
     }
 
