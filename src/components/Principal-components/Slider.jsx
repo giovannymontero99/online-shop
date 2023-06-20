@@ -28,7 +28,7 @@ const Slider = () => {
         }
     }
 
-    useEffect(() => () => getData(null), []);
+    getData(null);
 
 
     const getOneData = async (targetId) => {
@@ -94,7 +94,7 @@ const Slider = () => {
             }
 
             <div className='targets-content' >
-                {targets.length === 0 ? <div>Cargando...</div> : targets.map(target => {
+                {targets.length === 0 ? <div></div> : targets.map(target => {
                     return (
                         <div key={target.id} className='target' >
                             <div className='target-img-content' ><img src={target.imgs[0]} /></div>
@@ -107,7 +107,6 @@ const Slider = () => {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     );
                 })
