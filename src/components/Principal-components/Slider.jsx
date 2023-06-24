@@ -8,18 +8,16 @@ import whatsapp from '../../assets/whatsapp.svg'
 const Slider = () => {
     const [next, setNext] = useState(null);
     const [previus, setPrevius] = useState(null);
-    const [pages, setPages] = useState(null);
     const [targets, setTargets] = useState([]);
     const [targetData, setTargetData] = useState(null);
     const [defaultImg, setDefaultImg] = useState(null);
     const ref = useRef(null);
 
     const getData = async (url) => {
-        url === null ? url = `https://backend-390023.rj.r.appspot.com/api/v1/?offset=0&limit=20` : url;
+        url === null ? url = `https://backend-390023.rj.r.appspot.com/all-users/?offset=0&limit=20` : url;
         try {
             const response = await fetch(url);
             const responseJson = await response.json();
-            setPages(responseJson.total);
             setNext(responseJson.next);
             setPrevius(responseJson.previus);
             setTargets(responseJson.results);
@@ -28,14 +26,14 @@ const Slider = () => {
         }
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         getData(null);
-    },[]);
+    }, []);
 
 
     const getOneData = async (targetId) => {
         try {
-            const response = await fetch(`https://backend-390023.rj.r.appspot.com/api/v1/${targetId}`);
+            const response = await fetch(`https://backend-390023.rj.r.appspot.com/user-id/${targetId}`);
             const responseJson = await response.json();
             setTargetData(responseJson)
         } catch (error) {
@@ -96,7 +94,7 @@ const Slider = () => {
             }
 
             <div className='targets-content' >
-                { targets.length === 0 || targets === undefined ? <div></div> : targets.map(target => {
+                {targets === undefined ? <div></div> : targets.map(target => {
                     return (
                         <div key={target.id} className='target' >
                             <div className='target-img-content' ><img src={target.imgs[0]} /></div>
@@ -114,13 +112,24 @@ const Slider = () => {
                 })
                 }
             </div>
+
             <div className='pages-section' >
-                <div onClick={() => getData(previus)} >
-                    ◀
-                </div>
-                <div onClick={() => getData(next)} >
-                    ▶
-                </div>
+                {
+                    previus === null ? null :
+                        <div onClick={() => getData(previus)} >
+                            ◀
+                        </div>
+                }
+
+
+                {
+                    next === null ? null :
+                        <div onClick={() => getData(next)} >
+                            ▶
+                        </div>
+                }
+
+
             </div>
             <footer className='footer-section' >
                 <div>
