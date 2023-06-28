@@ -4,6 +4,8 @@ import visit from '../../assets/visit.svg';
 import facebook from '../../assets/facebook.svg';
 import instagram from '../../assets/instagram.svg'
 import whatsapp from '../../assets/whatsapp.svg'
+import Snipper from './Snipper';
+import Target from './Target';
 
 const Slider = () => {
     const [next, setNext] = useState(null);
@@ -14,6 +16,7 @@ const Slider = () => {
     const ref = useRef(null);
 
     const getData = async (url) => {
+        setTargets([]);
         url === null ? url = `https://backend-390023.rj.r.appspot.com/all-users/?offset=0&limit=20` : url;
         try {
             const response = await fetch(url);
@@ -48,6 +51,7 @@ const Slider = () => {
                 <h1>Tecnologia Manizales</h1>
                 <p>Toda la tecnologia al alcance de tu mano.</p>
             </section>
+            <section></section>
             <section className='products-inicio' >
                 <h3>Lo nuevo para ti:</h3>
                 <img src="https://cdn.shopify.com/s/files/1/0742/5897/2969/files/CamaraA68cuadrada_1066x.png?v=1685476214" alt="Cámara dual para carro" />
@@ -93,30 +97,34 @@ const Slider = () => {
                     </div>
             }
 
+            {
+                /**
+                 *  Seccion de carga de tarjetas
+                 **/
+            }
             <div className='targets-content' >
-                {targets === undefined ? <div></div> : targets.map(target => {
-                    return (
-                        <div key={target.id} className='target' >
-                            <div className='target-img-content' ><img src={target.imgs[0]} /></div>
-                            <div className='target-info' >
-                                <div className='target-title' >{target.title}</div>
-                                <div className='target-footer' >
-                                    <div className='target-valor' >${target.pvp}</div>
-                                    <div style={{ display: 'flex', alignItems: 'center' }} onClick={e => getOneData(target.id)}   >
-                                        <img src={visit} />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })
+                {
+                    targets.length === 0
+                        ? <Snipper />
+                        : targets.map(target => {
+                            return (
+                                <Target key={target.id}
+                                    id={target.id}
+                                    img={target.imgs[0]}
+                                    title={target.title}
+                                    pvp={target.pvp}
+                                    buscarUnaTarjeta={() => getOneData(target.id)}
+                                    visit={visit} />
+
+                            );
+                        })
                 }
             </div>
 
-            <div className='pages-section' >
+            <div  className='pages-section' >
                 {
                     previus === null ? null :
-                        <div onClick={() => getData(previus)} >
+                        <div  onClick={() => getData(previus)} >
                             ◀
                         </div>
                 }
